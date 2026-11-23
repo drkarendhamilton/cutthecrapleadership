@@ -510,6 +510,25 @@
   nav .logo-img { height: 44px; width: auto; display: block; }
   .logo-img-ft { height: 80px; width: auto; display: block; }
   @media (max-width: 900px) { nav .logo-img { height: 36px; } .logo-img-ft { height: 60px; } }
+  nav ul { gap: 26px; }
+  @media (max-width: 1080px) { nav ul { gap: 18px; } }
+
+  /* mobile menu */
+  .menu-btn { display: none; background: none; border: 0; cursor: pointer; padding: 10px 4px; }
+  .menu-btn span { display: block; width: 24px; height: 1.5px; background: var(--espresso); margin: 5px 0; transition: transform .3s, opacity .3s; }
+  @media (max-width: 900px) {
+    .menu-btn { display: block; order: 3; }
+    nav .wrap { position: relative; }
+    nav ul { position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0 !important; background: var(--ivory); border-bottom: 1px solid var(--line); box-shadow: 0 20px 40px rgba(74,48,26,.12); max-height: 0; overflow: hidden; transition: max-height .4s ease; }
+    nav.open ul { max-height: 420px; }
+    nav ul li:not(:last-child) { display: block !important; }
+    nav ul li a { display: block; padding: 15px 28px; border-top: 1px solid var(--line); }
+    nav ul li:last-child { padding: 14px 28px 20px; }
+    nav ul li:last-child a { text-align: center; }
+    nav.open .menu-btn span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    nav.open .menu-btn span:nth-child(2) { opacity: 0; }
+    nav.open .menu-btn span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  }
 </style>
 </head>
 <body>
@@ -517,11 +536,14 @@
 <nav>
   <div class="wrap">
     <a href="index.html" class="logo" aria-label="Cut the Crap Leadership home"><img class="logo-img" src="logo-flat.png" alt="Cut the Crap Leadership" width="640" height="167"></a>
+    <button class="menu-btn" type="button" aria-label="Open menu" onclick="this.closest('nav').classList.toggle('open')"><span></span><span></span><span></span></button>
     <ul>
       <li><a href="index.html#book">The Book</a></li>
-      <li><a href="index.html#author">About Karen</a></li>
-      <li><a href="index.html#work">Work With Karen</a></li>
-      <li><a href="index.html#buy" class="nav-cta">Get the Book</a></li>
+      <li><a href="speaking.html">Speaking</a></li>
+      <li><a href="workshops.html">Workshops</a></li>
+      <li><a href="coaching.html">Coaching</a></li>
+      <li><a href="book-clubs.html">Book Clubs</a></li>
+      <li><a href="book-now.html" class="nav-cta">Book Now</a></li>
     </ul>
   </div>
 </nav>
@@ -592,11 +614,11 @@
   <div class="wrap">
     <div class="gf-top">
       <p class="gf-line">Cut the noise.<br><em>Lead with clarity.</em></p>
-      <a href="index.html#signup" class="btn">Join the Launch List</a>
+      <a href="early-readers.html" class="btn">Join the Early Readers</a>
     </div>
     <div class="gf-mid">
       <a href="index.html" class="logo" aria-label="Cut the Crap Leadership home"><img class="logo-img-ft" src="logo-3d.png" alt="Cut the Crap Leadership" width="1000" height="234"></a>
-      <div class="gf-nav"><a href="index.html#book">The Book</a><a href="index.html#author">About Karen</a><a href="index.html#work">Work With Karen</a><a href="index.html#buy">Get the Book</a></div>
+      <div class="gf-nav"><a href="speaking.html">Speaking</a><a href="workshops.html">Workshops</a><a href="coaching.html">Coaching</a><a href="book-clubs.html">Book Clubs</a><a href="early-readers.html">Early Readers</a><a href="book-now.html">Book Now</a></div>
     </div>
     <div class="gf-bottom">
       <div>&copy; 2026 Dr. Karen Hamilton. All rights reserved.</div>
