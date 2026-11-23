@@ -459,7 +459,7 @@ booknow = f'''
 <section class="block alt" id="request">
   <div class="wrap">
     {form('form-booknow', 'Booking Request', 'Send a request',
-      '<div class="eyebrow"><span class="sec-num">02</span><span class="sec-line"></span>Send a Request</div><h2 class="display">Tell us what you need.</h2><p>For speaking, workshops, coaching, bulk orders, or media. We&rsquo;ll follow up within two business days.</p>',
+      '<div class="eyebrow"><span class="sec-num">02</span><span class="sec-line"></span>Send a Request</div><h2 class="display">Tell us what you need.</h2><p>For speaking, workshops, coaching, bulk orders, or media. We&rsquo;ll follow up within two business days.</p><p>Prefer to call or text? <a href="tel:+16159140086" style="color:var(--camel-dark)">(615) 914-0086</a></p>',
       EMAIL_FIELDS + [('ROW', [('organization', 'Organization', 'text', {}), ('phone', 'Phone', 'tel', {})]),
                       ('ROW', [('request_type', 'Request type', 'select', {'required': True, 'options': ['Keynote / speaking', 'Team workshop', 'Coaching', 'Book club', 'Bulk book order', 'Media / podcast', 'Other']}),
                                ('date', 'Preferred date', 'date', {})]),
