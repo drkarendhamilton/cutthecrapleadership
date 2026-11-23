@@ -542,6 +542,14 @@
   .hcut .hsc.go .jaw.up { animation: jawUp .22s ease-in-out 6 alternate, idleUp 4.5s 2.6s ease-in-out infinite; }
   .hcut .hsc.go .jaw.dn { animation: jawDn .22s ease-in-out 6 alternate, idleDn 4.5s 2.6s ease-in-out infinite; }
   @media (prefers-reduced-motion: reduce) { .hcut .top { animation: none; transform: translate(-.018em, -.06em) rotate(-.4deg); } .hcut .hline line { animation: none; stroke-dashoffset: 0; } .hcut .hsc { opacity: 1; } }
+
+  /* two endorsements, equal billing */
+  .testimonials:has(.testimonial + .testimonial) { grid-template-columns: 1fr 1fr; gap: 28px; max-width: 1100px; margin: 0 auto; }
+  .testimonials:has(.testimonial + .testimonial) .testimonial,
+  .testimonials:has(.testimonial + .testimonial) .testimonial.featured { grid-column: auto; text-align: left; background: rgba(255,255,255,.65); padding: 44px 40px; border: 0; border-top: 2px solid var(--gold); margin: 0; }
+  .testimonials:has(.testimonial + .testimonial) .testimonial p { font-size: 21px; line-height: 1.55; }
+  @media (max-width: 900px) { .testimonials:has(.testimonial + .testimonial) { grid-template-columns: 1fr; } .testimonials:has(.testimonial + .testimonial) .testimonial p { font-size: 19px; } }
+  .testimonials:has(.testimonial + .testimonial) .testimonial::before { display: none !important; }
 </style>
 </head>
 <body>
@@ -603,12 +611,10 @@
         <p>&ldquo;Great leadership isn&rsquo;t about doing more; it&rsquo;s about having the courage to eliminate what gets in the way. In <em>Cut the Crap</em>, Dr. Karen Hamilton delivers a refreshingly direct, practical approach to cutting through the noise, challenging the status quo, and leading with greater clarity, confidence, and results.&rdquo;</p>
         <cite>&mdash; Dr. Philip A. Foster, <span>Author of <em>The Open Organization</em></span></cite>
       </blockquote>
-      <!-- MORE TESTIMONIALS: copy a blockquote like this one
       <blockquote class="testimonial">
-        <p>&ldquo;Quote here.&rdquo;</p>
-        <cite>&mdash; Name, <span>Title</span></cite>
+        <p>&ldquo;<em>Cut the CRAP Leadership</em> is a practical approach to building and maintaining a principled leadership style. By eliminating political noise, complacency and untested assumptions, this book serves as a clear framework for making ethical decisions that positively impacts your leadership effectiveness and corporate culture. <em>CRAP Leadership</em> by Dr. Karen Hamilton, DSL is essential reading for all leaders who wish to focus on real-world integrity over ideology.&rdquo;</p>
+        <cite>&mdash; Audrey P. Langenhop, <span>M.Ed, CEPC</span></cite>
       </blockquote>
-      -->
     </div>
   </div>
 </section>
