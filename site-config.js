@@ -7,8 +7,11 @@ window.SITE_CONFIG = {
   // (opens a pre-filled email to this address).
   contactEmail: 'drkarendhamilton@gmail.com',
 
-  // Calendly scheduling link, e.g. 'https://calendly.com/your-name/discovery-call'
-  // Leave '' until the Calendly account exists.
+  // Google Calendar booking page (opens in a new tab)
+  bookingUrl: 'https://calendar.app.google/11XNmBU3vB7Axv6A8',
+  // Optional: the src="..." URL from Google Calendar > Share > Website embed
+  // (ends in ?gv=true). When filled in, the calendar shows right on the page.
+  bookingEmbedUrl: '',
   calendlyUrl: '',
 
   // MailerLite. Fill these in once the account exists.
