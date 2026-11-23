@@ -135,7 +135,7 @@
   .promos .btn { background: var(--gold); border-color: var(--gold); color: var(--espresso); }
   .promos .btn:hover { background: var(--champagne); border-color: var(--champagne); }
   .promo-crap { border: 1px solid rgba(196,154,94,0.35); padding: 40px 44px; }
-  .promo-crap div { font-family: 'Cormorant Garamond', serif; font-size: 34px; color: #8f7d6c; line-height: 1.5; text-decoration: line-through; text-decoration-color: var(--gold); text-decoration-thickness: 2px; }
+  .promo-crap div { font-family: 'Cormorant Garamond', serif; font-size: 34px; color: #8f7d6c; line-height: 1.5;  }
   .promo-crap span { color: var(--gold); font-weight: 600; }
   .promo-crap .cut { text-decoration: none; color: var(--champagne); font-style: italic; margin-top: 12px; padding-top: 16px; border-top: 1px solid rgba(196,154,94,0.3); font-size: 30px; }
   .promo-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 64px; }
@@ -168,6 +168,25 @@
   .hero .byline { white-space: nowrap; }
   .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px 40px; }
   .stat .l { max-width: 220px; }
+
+
+  /* ---- Scroll motion ---- */
+  .progress { position: fixed; top: 0; left: 0; height: 2px; width: 100%; background: linear-gradient(90deg, var(--gold), var(--camel)); transform-origin: 0 50%; transform: scaleX(0); z-index: 50; pointer-events: none; }
+  .js .stagger > * { opacity: 0; transform: translateY(30px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+  .js .stagger.in > * { opacity: 1; transform: none; }
+  .js .stagger.in > *:nth-child(2) { transition-delay: .12s; } .js .stagger.in > *:nth-child(3) { transition-delay: .24s; } .js .stagger.in > *:nth-child(4) { transition-delay: .36s; } .js .stagger.in > *:nth-child(5) { transition-delay: .48s; }
+  .js .section-head .rule, .js .signup .rule { width: 0; transition: width 1.2s .2s cubic-bezier(.2,.7,.2,1); }
+  .js .section-head.in .rule, .js .signup .rule.in { width: 56px; }
+  .promo-crap div:not(.cut) { position: relative; display: inline-block; text-decoration: none; }
+  .promo-crap div:not(.cut)::after { content: ''; position: absolute; left: -4px; right: -4px; top: 55%; height: 2px; background: var(--gold); transform: scaleX(0); transform-origin: 0 50%; transition: transform .7s cubic-bezier(.6,0,.2,1); }
+  .js .promo-crap.in div:not(.cut)::after { transform: scaleX(1); }
+  .js .promo-crap.in div:nth-child(1)::after { transition-delay: .3s; } .js .promo-crap.in div:nth-child(2)::after { transition-delay: .6s; } .js .promo-crap.in div:nth-child(3)::after { transition-delay: .9s; } .js .promo-crap.in div:nth-child(4)::after { transition-delay: 1.2s; }
+  .js .promo-crap .cut { opacity: 0; transform: translateY(10px); transition: opacity .8s 1.8s, transform .8s 1.8s; }
+  .js .promo-crap.in .cut { opacity: 1; transform: none; }
+  .promo-crap div { display: block; }
+  .promo-crap div:not(.cut) { display: table; }
+  .photo img { will-change: translate; }
+  @media (prefers-reduced-motion: reduce) { .js .stagger > *, .js .promo-crap .cut { opacity: 1 !important; transform: none !important; transition: none !important; } .js .section-head .rule, .js .signup .rule { width: 56px; } .js .promo-crap div::after { transform: scaleX(1); transition: none; } .progress { display: none; } }
 
   /* Sections */
   section { padding: 110px 0; }
@@ -209,7 +228,7 @@
   .author h2 { font-size: clamp(42px, 5vw, 60px); margin-bottom: 4px; }
   .author .cred { font-size: 12px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--camel-dark); margin-bottom: 28px; }
   .author p { margin-bottom: 18px; font-size: 17px; color: var(--text); }
-  .stats { display: flex; gap: 48px; margin-top: 34px; padding-top: 28px; border-top: 1px solid rgba(74,48,26,0.25); flex-wrap: wrap; }
+  .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px 40px; margin-top: 34px; padding-top: 28px; border-top: 1px solid rgba(74,48,26,0.25); flex-wrap: wrap; }
   .stat .n { font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 500; line-height: 1; color: var(--camel-dark); }
   .stat .l { font-size: 11px; color: var(--text); text-transform: uppercase; letter-spacing: 0.18em; font-weight: 400; margin-top: 10px; max-width: 160px; }
 
@@ -265,6 +284,7 @@
 </head>
 <body>
 
+<div class="progress" aria-hidden="true"></div>
 <div class="announce">
   <span>Coming December 2026</span><span class="dot">&#9670;</span><a href="#signup">Join the launch list for early-reader offers &rarr;</a>
 </div>
@@ -342,7 +362,7 @@
       <h2 class="display" style="margin-top:12px;">Four things stand between every leader and their results.</h2>
       <p>Crap is everything that sits between a leader and the results they are responsible for: the busywork nobody can justify, the meeting that should have been a sentence, the politics you pretend not to see.</p>
     </div>
-    <div class="crap reveal">
+    <div class="crap stagger">
       <div class="crap-item">
         <div class="letter">C</div>
         <h3>Complacency</h3>
@@ -397,11 +417,11 @@
       <div class="cred">Doctor of Global Strategic Leadership</div>
       <p>She led her first team at fifteen, before she had the title. Since then she has turned failing programs around, served as Vice President of Academic Affairs and Dean of Business and Online Programs across many institutions, built a university from zero students, and led more than 100 doctoral students to the finish line.</p>
       <p>Today she serves as founding Chancellor of Glory Christian University. She is an award-winning educator, the author of <em>The Christian Millennial</em>, and a mentor through nonprofit and workforce training programs. She has been underestimated, out-politicked, and buried in red tape, and has been the leader deciding whether to cut it. Long before this book, &ldquo;cut the crap&rdquo; was how she led.</p>
-      <div class="stats">
-        <div class="stat"><div class="n">15+</div><div class="l">Years of executive leadership</div></div>
-        <div class="stat"><div class="n">100+</div><div class="l">Doctoral candidates led to defense</div></div>
-        <div class="stat"><div class="n">36</div><div class="l">Degree programs built from the ground up</div></div>
-        <div class="stat"><div class="n">35%</div><div class="l">Student retention gain as chief academic officer</div></div>
+      <div class="stats stagger">
+        <div class="stat"><div class="n" data-count="15" data-suffix="+">15+</div><div class="l">Years of executive leadership</div></div>
+        <div class="stat"><div class="n" data-count="100" data-suffix="+">100+</div><div class="l">Doctoral candidates led to defense</div></div>
+        <div class="stat"><div class="n" data-count="36" data-suffix="">36</div><div class="l">Degree programs built from the ground up</div></div>
+        <div class="stat"><div class="n" data-count="35" data-suffix="%">35%</div><div class="l">Student retention gain as chief academic officer</div></div>
       </div>
     </div>
   </div>
@@ -416,7 +436,7 @@
         <p>Be first in line on launch day, with early-reader offers and no-fluff leadership notes from Karen.</p>
         <a href="#signup" class="btn">Join the Launch List</a>
       </div>
-      <div class="promo-crap">
+      <div class="promo-crap reveal">
         <div><span>C</span>omplacency</div>
         <div><span>R</span>ed Tape</div>
         <div><span>A</span>ssumptions</div>
@@ -424,7 +444,7 @@
         <div class="cut">Cut all four.</div>
       </div>
     </div>
-    <div class="promo-cards reveal">
+    <div class="promo-cards stagger">
       <div class="promo-card">
         <div class="pc-num">01</div>
         <h3>Early Reader List</h3>
@@ -455,7 +475,7 @@
       <h2 class="display" style="margin-top:12px;">Available December 2026 wherever books are sold</h2>
       <p>Paperback, e-book, or a signed copy straight from Karen.</p>
     </div>
-    <div class="formats reveal">
+    <div class="formats stagger">
       <div class="format">
         <h3>Paperback</h3>
         <div class="sub">Shipped from your favorite store</div>
@@ -491,7 +511,7 @@
       <h2 class="display" style="margin-top:12px;">Bring Cut the Crap to your team</h2>
       <p>Take the ideas off the page and into your organization.</p>
     </div>
-    <div class="offers reveal">
+    <div class="offers stagger">
       <div class="offer">
         <h3>Keynotes &amp; Speaking</h3>
         <p>Straight-talk leadership keynotes for conferences, retreats, and leadership events.</p>
@@ -513,7 +533,7 @@
 
 <section id="signup" class="signup">
   <div class="wrap">
-    <div class="rule"></div>
+    <div class="rule reveal"></div>
     <div class="eyebrow">Coming December 2026</div>
     <h2 class="display">Be first to know</h2>
     <p>Join the list for launch day, early-reader offers, and no-fluff leadership notes from Karen.</p>
@@ -529,9 +549,25 @@
 </footer>
 
 <script>
-(function(){var els=document.querySelectorAll('.reveal');if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
-var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
-els.forEach(function(e){io.observe(e)});})();
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els=document.querySelectorAll('.reveal, .stagger');
+  function countUp(el){var end=+el.dataset.count,suf=el.dataset.suffix||'',t0=null,d=1600;
+    function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/d,1),e=1-Math.pow(1-p,3);el.textContent=Math.round(end*e)+suf;if(p<1)requestAnimationFrame(step);}
+    requestAnimationFrame(step);}
+  function show(el){el.classList.add('in');if(!reduce)el.querySelectorAll('[data-count]').forEach(countUp);}
+  if(!('IntersectionObserver' in window)||reduce){els.forEach(function(e){e.classList.add('in')});}
+  else{var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){show(e.target);io.unobserve(e.target);}})},{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(e){io.observe(e)});}
+  if(reduce)return;
+  var bar=document.querySelector('.progress'),cover=document.querySelector('.cover-wrap'),photo=document.querySelector('.photo img'),hero=document.querySelector('.hero-copy'),ticking=false;
+  function onScroll(){var y=window.scrollY,h=document.documentElement.scrollHeight-innerHeight;
+    bar.style.transform='scaleX('+(h>0?y/h:0)+')';
+    if(y<innerHeight*1.2){cover.style.translate='0 '+(y*-0.12)+'px';hero.style.translate='0 '+(y*0.08)+'px';hero.style.opacity=Math.max(0,1-y/(innerHeight*0.9));}
+    if(photo){var r=photo.parentNode.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight){var c=(r.top+r.height/2-innerHeight/2)/innerHeight;photo.style.translate='0 '+(c*-18)+'px';}}
+    ticking=false;}
+  window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(onScroll);ticking=true;}},{passive:true});onScroll();
+})();
 </script>
 </body>
 </html>
