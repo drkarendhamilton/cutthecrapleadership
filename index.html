@@ -394,6 +394,26 @@
   @keyframes snip { 0%, 80%, 100% { translate: 0 0; } 86%, 92% { translate: -5px -7px; } }
   @keyframes snipb { 0%, 80%, 100% { translate: 0 0; } 86%, 92% { translate: 5px 7px; } }
   @media (prefers-reduced-motion: reduce) { .crap-item .letter, .letter .h { animation: none !important; } .js .crap .letter .t, .js .crap .letter .b { opacity: 1 !important; transform: none !important; } }
+
+  /* ===== Scissors (matching the cover) ===== */
+  .sc { display: block; width: 100%; height: auto; overflow: visible; filter: drop-shadow(0 4px 6px rgba(60,30,10,0.25)); }
+  .sc .jaw { transform-box: view-box; transform-origin: 60px 30px; }
+  .snip .jaw.up { animation: jawUp .45s ease-in-out infinite alternate; }
+  .snip .jaw.dn { animation: jawDn .45s ease-in-out infinite alternate; }
+  @keyframes jawUp { from { transform: rotate(-14deg); } to { transform: rotate(-1deg); } }
+  @keyframes jawDn { from { transform: rotate(14deg); } to { transform: rotate(1deg); } }
+  /* hero: scissors glide across "Crap" with the slice */
+  .hero-sc { position: absolute; top: 56%; left: -8%; width: 0.62em; translate: 0 -50%; rotate: -4deg; opacity: 0; pointer-events: none; animation: heroSc 1.9s 1.0s cubic-bezier(.5,0,.3,1) forwards; }
+  .hero-sc .jaw.up { animation: jawUp .22s ease-in-out 5 alternate 1.05s; } .hero-sc .jaw.dn { animation: jawDn .22s ease-in-out 5 alternate 1.05s; }
+  @keyframes heroSc { 0% { left: -14%; opacity: 0; } 8% { opacity: 1; } 48% { left: 92%; opacity: 1; } 70% { left: 100%; opacity: 0; } 100% { left: 100%; opacity: 0; } }
+  /* scroll-linked cut line */
+  .cutline { background: var(--satin); padding: 34px 0 0; }
+  .cl-track { position: relative; height: 56px; }
+  .cl-track::before { content: ''; position: absolute; left: 0; right: 0; top: 50%; border-top: 1.5px dashed var(--sand); }
+  .cl-cut { position: absolute; left: 0; top: 50%; height: 1.5px; width: 0; margin-top: -0.5px; background: linear-gradient(90deg, var(--gold), var(--camel)); }
+  .cl-sc { position: absolute; top: 50%; left: 0; width: 96px; translate: -50% -50%; }
+  .cl-sc .sc { rotate: 0deg; }
+  @media (prefers-reduced-motion: reduce) { .hero-sc { display: none; } .snip .jaw { animation: none !important; } }
 </style>
 </head>
 <body>
@@ -415,7 +435,7 @@
 <header class="hero">
   <div class="wrap">
     <div class="hero-copy">
-      <h1 class="display">Cut the <em>Crap</em><br>Leadership</h1>
+      <h1 class="display">Cut the <em>Crap<span class="hero-sc"><svg class="sc" viewBox="0 0 120 60" aria-hidden="true"><defs><linearGradient id="SCs1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6f6f6"/><stop offset=".5" stop-color="#b9bcc2"/><stop offset="1" stop-color="#7d8188"/></linearGradient><linearGradient id="SCr1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ef5a48"/><stop offset="1" stop-color="#b8261a"/></linearGradient></defs><g class="jaw up"><path d="M58 28.5 L117 25.5 L58 32 Z" fill="url(#SCs1)"/><path d="M40 20 L60 29" stroke="url(#SCr1)" stroke-width="6" stroke-linecap="round"/><ellipse cx="24" cy="15" rx="15" ry="10" fill="none" stroke="url(#SCr1)" stroke-width="6"/></g><g class="jaw dn"><path d="M58 31.5 L117 34.5 L58 28 Z" fill="url(#SCs1)"/><path d="M40 40 L60 31" stroke="url(#SCr1)" stroke-width="6" stroke-linecap="round"/><ellipse cx="24" cy="45" rx="15" ry="10" fill="none" stroke="url(#SCr1)" stroke-width="6"/></g><circle cx="60" cy="30" r="2.6" fill="#dcdcdf" stroke="#6d7077" stroke-width="1"/></svg></span></em><br>Leadership</h1>
       <div class="tag">Then lead with clarity</div>
       <p class="lede">Most leadership books hand you something to add. This one is about what to take away.</p>
       <div class="ctas">
@@ -464,6 +484,8 @@
     </div>
   </div>
 </section>
+
+<div class="cutline" aria-hidden="true"><div class="wrap"><div class="cl-track"><div class="cl-cut"></div><div class="cl-sc"><svg class="sc" viewBox="0 0 120 60" aria-hidden="true"><defs><linearGradient id="SCs2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6f6f6"/><stop offset=".5" stop-color="#b9bcc2"/><stop offset="1" stop-color="#7d8188"/></linearGradient><linearGradient id="SCr2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ef5a48"/><stop offset="1" stop-color="#b8261a"/></linearGradient></defs><g class="jaw up"><path d="M58 28.5 L117 25.5 L58 32 Z" fill="url(#SCs2)"/><path d="M40 20 L60 29" stroke="url(#SCr2)" stroke-width="6" stroke-linecap="round"/><ellipse cx="24" cy="15" rx="15" ry="10" fill="none" stroke="url(#SCr2)" stroke-width="6"/></g><g class="jaw dn"><path d="M58 31.5 L117 34.5 L58 28 Z" fill="url(#SCs2)"/><path d="M40 40 L60 31" stroke="url(#SCr2)" stroke-width="6" stroke-linecap="round"/><ellipse cx="24" cy="45" rx="15" ry="10" fill="none" stroke="url(#SCr2)" stroke-width="6"/></g><circle cx="60" cy="30" r="2.6" fill="#dcdcdf" stroke="#6d7077" stroke-width="1"/></svg></div></div></div></div>
 
 <section id="book">
   <div class="bg-crap" aria-hidden="true">CRAP &middot; CRAP &middot; CRAP</div>
@@ -672,11 +694,13 @@
   else{var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){show(e.target);io.unobserve(e.target);}})},{threshold:.15,rootMargin:'0px 0px -40px 0px'});
     els.forEach(function(e){io.observe(e)});}
   if(reduce)return;
-  var bar=document.querySelector('.progress'),cover=document.querySelector('.cover-wrap'),photo=document.querySelector('.photo img'),hero=document.querySelector('.hero-copy'),bg=document.querySelector('.bg-crap'),ticking=false;
+  var bar=document.querySelector('.progress'),cover=document.querySelector('.cover-wrap'),photo=document.querySelector('.photo img'),hero=document.querySelector('.hero-copy'),bg=document.querySelector('.bg-crap'),cl=document.querySelector('.cl-track'),clCut=document.querySelector('.cl-cut'),clSc=document.querySelector('.cl-sc'),lastY=0,snipT=null,ticking=false;
   function onScroll(){var y=window.scrollY,h=document.documentElement.scrollHeight-innerHeight;
     bar.style.transform='scaleX('+(h>0?y/h:0)+')';
     if(y<innerHeight*1.2){cover.style.translate='0 '+(y*-0.12)+'px';hero.style.translate='0 '+(y*0.08)+'px';hero.style.opacity=Math.max(0,1-y/(innerHeight*0.9));}
     if(photo){var r=photo.parentNode.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight){var c=(r.top+r.height/2-innerHeight/2)/innerHeight;photo.style.translate='0 '+(c*-18)+'px';}}
+    if(cl){var rc=cl.getBoundingClientRect(),p=Math.min(1,Math.max(0,(innerHeight*0.92-rc.top)/(innerHeight*0.65)));clCut.style.width=(p*100)+'%';clSc.style.left=(p*100)+'%';
+      if(p>0&&p<1&&y!==lastY){clSc.classList.add('snip');clearTimeout(snipT);snipT=setTimeout(function(){clSc.classList.remove('snip')},180);}lastY=y;}
     if(bg){var rb=bg.parentNode.getBoundingClientRect();if(rb.bottom>0&&rb.top<innerHeight){bg.style.translate=((rb.top/innerHeight)*-420-120)+'px 0';}}
     ticking=false;}
   window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(onScroll);ticking=true;}},{passive:true});onScroll();
