@@ -11,7 +11,7 @@ window.SITE_CONFIG = {
   bookingUrl: 'https://calendar.app.google/11XNmBU3vB7Axv6A8',
   // Optional: the src="..." URL from Google Calendar > Share > Website embed
   // (ends in ?gv=true). When filled in, the calendar shows right on the page.
-  bookingEmbedUrl: '',
+  bookingEmbedUrl: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ0138OZEF2qiYvdLpVYCwUinw49iTrsXyHHaBOZr4dAtjYShjx-8jumR-Te5F_VnP9uKpWR03VZ?gv=true',
   calendlyUrl: '',
 
   // MailerLite. Fill these in once the account exists.

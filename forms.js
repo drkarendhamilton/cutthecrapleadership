@@ -7,8 +7,9 @@
   // ---------- Calendly ----------
   var slot = document.getElementById('booking');
   if (slot && cfg.bookingEmbedUrl) {
-    slot.innerHTML = '<iframe src="' + cfg.bookingEmbedUrl + '" title="Schedule a call with Karen" loading="lazy"></iframe>';
-    slot.style.padding = '0';
+    slot.innerHTML = '<iframe src="' + cfg.bookingEmbedUrl + '" title="Schedule a call with Karen" loading="lazy"></iframe>' +
+      (cfg.bookingUrl ? '<p class="note" style="padding:14px 20px 22px;margin:0;font-size:13px">Calendar not loading? <a href="' + cfg.bookingUrl + '" target="_blank" rel="noopener" style="color:var(--camel-dark)">Open it in a new tab</a>.</p>' : '');
+    slot.style.padding = '0'; slot.style.display = 'block';
   } else if (slot && cfg.bookingUrl) {
     slot.innerHTML = '<p class="note">Choose a time for a free 30-minute discovery call with Dr. Karen Hamilton. Your confirmation email will include a Google Meet link.</p>' +
       '<a class="btn" href="' + cfg.bookingUrl + '" target="_blank" rel="noopener">See Available Times</a>' +
