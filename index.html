@@ -447,6 +447,72 @@
   .js .promo-crap.in .promo-sc { opacity: 1; translate: 0 0; }
   @media (max-width: 900px) { .cl-sc { width: 180px; } .cl-track { height: 100px; } .promo-sc { width: 130px; right: -20px; top: -50px; } .cl-label { display: none; } }
   @media (prefers-reduced-motion: reduce) { .hero-sc { display: block !important; opacity: 1; left: 103%; animation: none; } .promo-sc { opacity: 1 !important; translate: 0 0 !important; } }
+
+  /* ===== Refinements ===== */
+  /* 1. wordmark */
+  nav .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .logo-sc { width: 38px; height: auto; rotate: -18deg; transition: rotate .5s cubic-bezier(.2,.7,.2,1); }
+  .logo:hover .logo-sc { rotate: -4deg; }
+  .logo-text { display: flex; flex-direction: column; line-height: 1; }
+  .logo-text .lt1 { font-family: 'Cormorant Garamond', serif; font-size: 23px; font-weight: 500; color: var(--espresso); letter-spacing: .01em; }
+  .logo-text .lt1 em { color: var(--camel); }
+  .logo-text .lt2 { font-family: 'Jost', sans-serif; font-size: 9px; font-weight: 500; letter-spacing: .52em; text-transform: uppercase; color: var(--camel); margin-top: 5px; padding-left: 1px; }
+  nav .logo span { color: inherit; font-style: normal; }
+  nav .logo .lt1 em { color: var(--camel); font-style: italic; }
+
+  /* 2. satin texture + sheen */
+  body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 100; opacity: .05; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .3 0 0 0 0 .18 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .hero, .author, #book, .promos, .work, .cutline { background-image: linear-gradient(115deg, rgba(255,255,255,0) 20%, rgba(255,255,255,.38) 38%, rgba(255,255,255,0) 52%, rgba(255,255,255,.22) 70%, rgba(255,255,255,0) 85%), var(--sheen-base, none); }
+  .hero { --sheen-base: linear-gradient(180deg, var(--champagne) 0%, var(--satin) 100%); }
+  .author { --sheen-base: linear-gradient(180deg, var(--champagne), var(--sand)); }
+  #book, .cutline { --sheen-base: linear-gradient(180deg, var(--satin), var(--satin)); }
+  .promos { --sheen-base: linear-gradient(180deg, var(--satin), var(--champagne)); }
+  .work { --sheen-base: linear-gradient(180deg, var(--champagne), var(--satin)); }
+
+  /* 3. gold foil */
+  .foil, .stat .n, .promo-card .pc-num { background: linear-gradient(120deg, #7e5128 0%, #b88446 22%, #f1d7a4 38%, #c9975a 52%, #f6e2b8 64%, #a8703f 82%, #7e5128 100%); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent !important; animation: foil 7s ease-in-out infinite alternate; }
+  @keyframes foil { from { background-position: 0% 0; } to { background-position: 100% 0; } }
+  .letter .h { background: linear-gradient(105deg, #8a5a31 0%, #b88446 30%, #c9975a 42%, #f6e2b8 50%, #c9975a 58%, #a8703f 75%, #8a5a31 100%) !important; background-size: 320% 100% !important; -webkit-background-clip: text !important; background-clip: text !important; }
+
+  /* 4. editorial section numbers */
+  .sec-num { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 20px; letter-spacing: 0; text-transform: none; color: var(--gold); margin-right: 12px; vertical-align: -1px; }
+  .sec-line { display: inline-block; width: 34px; height: 1px; background: var(--gold); vertical-align: middle; margin-right: 14px; }
+  .section-head .rule { display: none; }
+
+  /* 5. pull quote */
+  .pull { padding: 120px 0; text-align: center; background: var(--ivory); position: relative; }
+  .pull blockquote { max-width: 980px; margin: 0 auto; }
+  .pull p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; font-size: clamp(40px, 6vw, 78px); line-height: 1.08; color: var(--espresso); }
+  .pull p em { font-style: normal; color: var(--camel); }
+  .pull cite { display: block; margin-top: 34px; font-style: normal; font-size: 12px; letter-spacing: .34em; text-transform: uppercase; color: var(--camel); }
+  .pull::before, .pull::after { content: ''; position: absolute; left: 50%; width: 1px; height: 60px; background: var(--gold); translate: -50% 0; }
+  .pull::before { top: 30px; } .pull::after { bottom: 30px; }
+
+  /* 6. grand footer */
+  footer.grand-footer { background: linear-gradient(180deg, var(--satin), var(--champagne)); color: var(--muted); padding: 100px 0 36px; border-top: 1px solid var(--line); font-size: 13px; letter-spacing: .04em; }
+  .grand-footer .wrap { display: block; }
+  .gf-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; flex-wrap: wrap; padding-bottom: 56px; border-bottom: 1px solid var(--gold); }
+  .gf-line { font-family: 'Cormorant Garamond', serif; font-size: clamp(44px, 6vw, 80px); line-height: 1.02; color: var(--espresso); }
+  .gf-line em { color: var(--camel); }
+  .gf-mid { display: flex; justify-content: space-between; align-items: center; gap: 30px; flex-wrap: wrap; padding: 38px 0; border-bottom: 1px solid var(--line); }
+  .gf-mid .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .gf-nav { display: flex; gap: 30px; flex-wrap: wrap; }
+  .gf-nav a { text-decoration: none; font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: var(--text) !important; }
+  .gf-nav a:hover { color: var(--camel) !important; }
+  .gf-bottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 26px; }
+  .grand-footer a { color: var(--camel-dark); text-decoration: none; }
+  .grand-footer .btn { color: #fff; }
+
+  /* 7. phones: book first */
+  @media (max-width: 900px) {
+    .hero .wrap { gap: 28px; }
+    .hero .cover-wrap { order: -1; padding: 10px 0 30px; }
+    .hero .book { --w: 200px; --d: 26px; }
+    .flip-btn { bottom: -2px; }
+    .logo-sc { width: 30px; } .logo-text .lt1 { font-size: 20px; } .logo-text .lt2 { font-size: 8px; letter-spacing: .44em; }
+    .pull { padding: 100px 0; }
+    .gf-nav { gap: 18px; }
+  }
 </style>
 </head>
 <body>
@@ -455,7 +521,7 @@
 
 <nav>
   <div class="wrap">
-    <a href="#" class="logo">Cut the <span>Crap</span></a>
+    <a href="#" class="logo" aria-label="Cut the Crap Leadership home"><svg class="logo-sc" viewBox="0 0 200 100" aria-hidden="true"><g fill="none" stroke="#a8703f" stroke-width="7"><ellipse cx="36" cy="74" rx="25" ry="16" transform="rotate(-20 36 74)"/><ellipse cx="36" cy="26" rx="25" ry="16" transform="rotate(20 36 26)"/><path d="M58 65 L92 51 M58 35 L92 49" stroke-linecap="round"/></g><path d="M86 50.5 L196 24.2 L197.6 26.6 L102 56.5 Z M86 49.5 L196 75.8 L197.6 73.4 L102 43.5 Z" fill="#c49a5e"/><circle cx="95" cy="50" r="5" fill="#a8703f"/></svg><span class="logo-text"><span class="lt1">Cut the <em>Crap</em></span><span class="lt2">Leadership</span></span></a>
     <ul>
       <li><a href="#book">The Book</a></li>
       <li><a href="#author">About Karen</a></li>
@@ -525,7 +591,7 @@
   <div class="wrap">
     <div class="section-head reveal">
       <div class="rule"></div>
-      <div class="eyebrow">The Book</div>
+      <div class="eyebrow"><span class="sec-num">01</span><span class="sec-line"></span>The Book</div>
       <h2 class="display" style="margin-top:12px;">Four things stand between every leader and their results.</h2>
       <p>Crap is everything that sits between a leader and the results they are responsible for: the busywork nobody can justify, the meeting that should have been a sentence, the politics you pretend not to see.</p>
     </div>
@@ -559,7 +625,7 @@
   <div class="wrap">
     <div class="section-head reveal">
       <div class="rule"></div>
-      <div class="eyebrow">The Covers</div>
+      <div class="eyebrow"><span class="sec-num">02</span><span class="sec-line"></span>The Covers</div>
       <h2 class="display" style="margin-top:12px;">Front &amp; back</h2>
     </div>
     <div class="cover-pair reveal">
@@ -575,20 +641,29 @@
   </div>
 </section>
 
+<section class="pull" aria-label="From the book">
+  <div class="wrap">
+    <blockquote class="reveal">
+      <p>&ldquo;The meeting that should have been <em>a sentence.</em>&rdquo;</p>
+      <cite>From Cut the Crap Leadership</cite>
+    </blockquote>
+  </div>
+</section>
+
 <section id="author" class="author">
   <div class="wrap">
     <div class="photo reveal"><img src="karen.jpg" alt="Dr. Karen Hamilton" loading="lazy"></div>
     <div class="reveal">
-      <div class="eyebrow">About the Author</div>
+      <div class="eyebrow"><span class="sec-num">03</span><span class="sec-line"></span>About the Author</div>
       <h2 class="display" style="margin-top:12px;">Dr. Karen Hamilton, DSL</h2>
       <div class="cred">Doctor of Global Strategic Leadership</div>
       <p>She led her first team at fifteen, before she had the title. Since then she has turned failing programs around, served as Vice President of Academic Affairs and Dean of Business and Online Programs across many institutions, built a university from zero students, and led more than 100 doctoral students to the finish line.</p>
       <p>Today she serves as founding Chancellor of Glory Christian University. She is an award-winning educator, the author of <em>The Christian Millennial</em>, and a mentor through nonprofit and workforce training programs. She has been underestimated, out-politicked, and buried in red tape, and has been the leader deciding whether to cut it. Long before this book, &ldquo;cut the crap&rdquo; was how she led.</p>
       <div class="stats stagger">
-        <div class="stat"><div class="n" data-count="15" data-suffix="+">15+</div><div class="l">Years of executive leadership</div></div>
-        <div class="stat"><div class="n" data-count="100" data-suffix="+">100+</div><div class="l">Doctoral candidates led to defense</div></div>
-        <div class="stat"><div class="n" data-count="36" data-suffix="">36</div><div class="l">Degree programs built from the ground up</div></div>
-        <div class="stat"><div class="n" data-count="35" data-suffix="%">35%</div><div class="l">Student retention gain as chief academic officer</div></div>
+        <div class="stat"><div class="n foil" data-count="15" data-suffix="+">15+</div><div class="l">Years of executive leadership</div></div>
+        <div class="stat"><div class="n foil" data-count="100" data-suffix="+">100+</div><div class="l">Doctoral candidates led to defense</div></div>
+        <div class="stat"><div class="n foil" data-count="36" data-suffix="">36</div><div class="l">Degree programs built from the ground up</div></div>
+        <div class="stat"><div class="n foil" data-count="35" data-suffix="%">35%</div><div class="l">Student retention gain as chief academic officer</div></div>
       </div>
     </div>
   </div>
@@ -638,7 +713,7 @@
   <div class="wrap">
     <div class="section-head reveal">
       <div class="rule"></div>
-      <div class="eyebrow">Get Your Copy</div>
+      <div class="eyebrow"><span class="sec-num">04</span><span class="sec-line"></span>Get Your Copy</div>
       <h2 class="display" style="margin-top:12px;">Available December 2026 wherever books are sold</h2>
       <p>Paperback, e-book, or a signed copy straight from Karen.</p>
     </div>
@@ -674,7 +749,7 @@
   <div class="wrap">
     <div class="section-head reveal">
       <div class="rule"></div>
-      <div class="eyebrow">Work With Karen</div>
+      <div class="eyebrow"><span class="sec-num">05</span><span class="sec-line"></span>Work With Karen</div>
       <h2 class="display" style="margin-top:12px;">Bring Cut the Crap to your team</h2>
       <p>Take the ideas off the page and into your organization.</p>
     </div>
@@ -708,10 +783,20 @@
   </div>
 </section>
 
-<footer>
+<footer class="grand-footer">
   <div class="wrap">
-    <div>&copy; 2026 Dr. Karen Hamilton. All rights reserved.</div>
-    <div><a href="privacy.html">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="mailto:drkarendhamilton@gmail.com">drkarendhamilton@gmail.com</a></div>
+    <div class="gf-top">
+      <p class="gf-line">Cut the noise.<br><em>Lead with clarity.</em></p>
+      <a href="#signup" class="btn">Join the Launch List</a>
+    </div>
+    <div class="gf-mid">
+      <a href="#" class="logo" aria-label="Cut the Crap Leadership home"><svg class="logo-sc" viewBox="0 0 200 100" aria-hidden="true"><g fill="none" stroke="#a8703f" stroke-width="7"><ellipse cx="36" cy="74" rx="25" ry="16" transform="rotate(-20 36 74)"/><ellipse cx="36" cy="26" rx="25" ry="16" transform="rotate(20 36 26)"/><path d="M58 65 L92 51 M58 35 L92 49" stroke-linecap="round"/></g><path d="M86 50.5 L196 24.2 L197.6 26.6 L102 56.5 Z M86 49.5 L196 75.8 L197.6 73.4 L102 43.5 Z" fill="#c49a5e"/><circle cx="95" cy="50" r="5" fill="#a8703f"/></svg><span class="logo-text"><span class="lt1">Cut the <em>Crap</em></span><span class="lt2">Leadership</span></span></a>
+      <div class="gf-nav"><a href="#book">The Book</a><a href="#author">About Karen</a><a href="#work">Work With Karen</a><a href="#buy">Get the Book</a></div>
+    </div>
+    <div class="gf-bottom">
+      <div>&copy; 2026 Dr. Karen Hamilton. All rights reserved.</div>
+      <div><a href="privacy.html">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="mailto:drkarendhamilton@gmail.com">drkarendhamilton@gmail.com</a></div>
+    </div>
   </div>
 </footer>
 
