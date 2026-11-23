@@ -434,7 +434,7 @@
   .cutline { padding: 50px 0 10px; }
   .cl-track { height: 150px; }
   .cl-track::before { border-top-width: 2px; border-top-color: var(--camel); opacity: .45; }
-  .cl-cut { height: 3px; margin-top: -1px; background: linear-gradient(90deg, var(--gold), var(--camel), #d93a2a); }
+  .cl-cut { height: 3px; margin-top: -1px; background: linear-gradient(90deg, var(--gold), var(--camel), #8a5a31); }
   .cl-sc { width: 280px; }
   .cl-sc:not(.snip) .jaw.up { animation: idleUp 3.5s ease-in-out infinite; }
   .cl-sc:not(.snip) .jaw.dn { animation: idleDn 3.5s ease-in-out infinite; }
@@ -518,6 +518,30 @@
   nav .logo-img { height: 44px; width: auto; display: block; }
   .logo-img-ft { height: 80px; width: auto; display: block; }
   @media (max-width: 900px) { nav .logo-img { height: 36px; } .logo-img-ft { height: 60px; } }
+
+  /* ===== Hero "Crap" = logo style (gold paper cut + gold scissors) ===== */
+  .hero h1 em.hcut { font-weight: 600; line-height: 1; margin: -0.08em 1.25em -0.02em -0.04em; color: transparent; position: relative; display: inline-block; }
+  .hero h1 em.hcut::after { display: none !important; }
+  .hcut .ghost { visibility: hidden; }
+  .hcut .pc { position: absolute; inset: 0; }
+  .hcut .ext, .hcut .face { position: absolute; left: 0; right: 0; top: 0; bottom: -.45em; }
+  .hcut .ext { color: #f7ecd3; text-shadow: .5px .6px 0 #e3c690, 1px 1.2px 0 #f7ecd3, 1.6px 1.9px 0 #c79c5e, 2.3px 2.7px 0 #9a6a35, 5px 8px 12px rgba(70,40,15,.16); }
+  .hcut .face { background: linear-gradient(170deg, #e7c286 0%, #c4904f 40%, #dcb070 60%, #ad7638 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hcut .top .ext  { clip-path: polygon(-20% -40%, 120% -40%, 120% 35.31%, -20% 39.17%); }
+  .hcut .top .face { clip-path: polygon(-20% -40%, 120% -40%, 120% 34.07%, -20% 37.93%); }
+  .hcut .bot .ext  { clip-path: polygon(-20% 39.17%, 120% 35.31%, 120% 150%, -20% 150%); }
+  .hcut .bot .face { clip-path: polygon(-20% 40.55%, 120% 36.69%, 120% 150%, -20% 150%); }
+  .hcut .top { z-index: 3; transform-origin: 0 55%; filter: drop-shadow(0 7px 6px rgba(60,32,10,.30)); animation: hlift .9s 2.1s cubic-bezier(.2,.9,.3,1.2) both; }
+  @keyframes hlift { from { transform: none; } to { transform: translate(-.018em, -.06em) rotate(-.4deg); } }
+  .hcut .hline { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: visible; z-index: 2; pointer-events: none; }
+  .hcut .hline line { stroke: url(#hcutg); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 100; stroke-dashoffset: 100; animation: hdraw 1.3s .9s cubic-bezier(.5,0,.3,1) forwards; }
+  @keyframes hdraw { to { stroke-dashoffset: 0; } }
+  .hcut .hsc { position: absolute; left: 0; top: 0; width: 1.4em; z-index: 4; opacity: 0; filter: drop-shadow(0 6px 8px rgba(60,30,10,.25)); }
+  .hcut .hsc .sc { filter: none; }
+  .hcut .hsc.go { opacity: 1; transition: transform 1.3s cubic-bezier(.5,0,.3,1), opacity .3s; }
+  .hcut .hsc.go .jaw.up { animation: jawUp .22s ease-in-out 6 alternate, idleUp 4.5s 2.6s ease-in-out infinite; }
+  .hcut .hsc.go .jaw.dn { animation: jawDn .22s ease-in-out 6 alternate, idleDn 4.5s 2.6s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce) { .hcut .top { animation: none; transform: translate(-.018em, -.06em) rotate(-.4deg); } .hcut .hline line { animation: none; stroke-dashoffset: 0; } .hcut .hsc { opacity: 1; } }
 </style>
 </head>
 <body>
@@ -539,7 +563,7 @@
 <header class="hero">
   <div class="wrap">
     <div class="hero-copy">
-      <h1 class="display">Cut the<br><em class="big-crap">Crap<span class="hero-sc"><svg class="sc" viewBox="0 0 200 100" aria-hidden="true"><defs><linearGradient id="SCs1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbfbfc"/><stop offset=".5" stop-color="#c3c6cb"/><stop offset="1" stop-color="#7b7f86"/></linearGradient><linearGradient id="SCr1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f0604c"/><stop offset=".55" stop-color="#d63a2a"/><stop offset="1" stop-color="#a91f15"/></linearGradient></defs><g class="jaw up"><path d="M58 65 L92 51" stroke="url(#SCr1)" stroke-width="9" stroke-linecap="round"/><ellipse cx="36" cy="74" rx="25" ry="16" transform="rotate(-20 36 74)" fill="none" stroke="url(#SCr1)" stroke-width="9"/><ellipse cx="35" cy="72.5" rx="20.5" ry="11.5" transform="rotate(-20 35 72.5)" fill="none" stroke="#ff9f8b" stroke-width="1.4" opacity=".5"/><path d="M86 50.5 L196 24.2 Q200.5 23.6 197.6 26.6 L102 56.5 Z" fill="url(#SCs1)" stroke="#7a7e85" stroke-width=".7" stroke-linejoin="round"/><path d="M104 48.6 L194 26" stroke="#ffffff" stroke-width="1.1" opacity=".85"/></g><g class="jaw dn"><g transform="translate(0 100) scale(1 -1)"><path d="M58 65 L92 51" stroke="url(#SCr1)" stroke-width="9" stroke-linecap="round"/><ellipse cx="36" cy="74" rx="25" ry="16" transform="rotate(-20 36 74)" fill="none" stroke="url(#SCr1)" stroke-width="9"/><ellipse cx="35" cy="72.5" rx="20.5" ry="11.5" transform="rotate(-20 35 72.5)" fill="none" stroke="#ff9f8b" stroke-width="1.4" opacity=".5"/><path d="M86 50.5 L196 24.2 Q200.5 23.6 197.6 26.6 L102 56.5 Z" fill="url(#SCs1)" stroke="#7a7e85" stroke-width=".7" stroke-linejoin="round"/><path d="M104 48.6 L194 26" stroke="#ffffff" stroke-width="1.1" opacity=".85"/></g></g><circle cx="95" cy="50" r="5.2" fill="url(#SCs1)" stroke="#5e6168" stroke-width="1.1"/><circle cx="95" cy="50" r="1.5" fill="#5e6168"/></svg></span></em><br>Leadership</h1>
+      <h1 class="display">Cut the<br><em class="big-crap hcut" aria-label="Crap"><span class="ghost">Crap</span><span class="pc bot" aria-hidden="true"><span class="ext">Crap</span><span class="face">Crap</span></span><svg class="hline" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="hcutg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#c49a5e" stop-opacity="0"/><stop offset=".12" stop-color="#c49a5e"/><stop offset=".7" stop-color="#b47a3c"/><stop offset="1" stop-color="#8a5a31"/></linearGradient></defs><line x1="-14" y1="56.56" x2="100" y2="52" pathLength="100" vector-effect="non-scaling-stroke"/></svg><span class="pc top" aria-hidden="true"><span class="ext">Crap</span><span class="face">Crap</span></span><span class="hsc" aria-hidden="true"><svg class="sc" viewBox="0 0 200 100" aria-hidden="true"><defs><linearGradient id="SCs1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff6df"/><stop offset=".5" stop-color="#e3c38a"/><stop offset="1" stop-color="#a8743c"/></linearGradient><linearGradient id="SCr1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3d9a3"/><stop offset=".55" stop-color="#c49a5e"/><stop offset="1" stop-color="#8a5a31"/></linearGradient></defs><g class="jaw up"><path d="M58 65 L92 51" stroke="url(#SCr1)" stroke-width="9" stroke-linecap="round"/><ellipse cx="36" cy="74" rx="25" ry="16" transform="rotate(-20 36 74)" fill="none" stroke="url(#SCr1)" stroke-width="9"/><ellipse cx="35" cy="72.5" rx="20.5" ry="11.5" transform="rotate(-20 35 72.5)" fill="none" stroke="#fff3d6" stroke-width="1.4" opacity=".5"/><path d="M86 50.5 L196 24.2 Q200.5 23.6 197.6 26.6 L102 56.5 Z" fill="url(#SCs1)" stroke="#8a5a31" stroke-width=".7" stroke-linejoin="round"/><path d="M104 48.6 L194 26" stroke="#ffffff" stroke-width="1.1" opacity=".85"/></g><g class="jaw dn"><g transform="translate(0 100) scale(1 -1)"><path d="M58 65 L92 51" stroke="url(#SCr1)" stroke-width="9" stroke-linecap="round"/><ellipse cx="36" cy="74" rx="25" ry="16" transform="rotate(-20 36 74)" fill="none" stroke="url(#SCr1)" stroke-width="9"/><ellipse cx="35" cy="72.5" rx="20.5" ry="11.5" transform="rotate(-20 35 72.5)" fill="none" stroke="#fff3d6" stroke-width="1.4" opacity=".5"/><path d="M86 50.5 L196 24.2 Q200.5 23.6 197.6 26.6 L102 56.5 Z" fill="url(#SCs1)" stroke="#8a5a31" stroke-width=".7" stroke-linejoin="round"/><path d="M104 48.6 L194 26" stroke="#ffffff" stroke-width="1.1" opacity=".85"/></g></g><circle cx="95" cy="50" r="5.2" fill="url(#SCs1)" stroke="#8a5a31" stroke-width="1.1"/><circle cx="95" cy="50" r="1.5" fill="#8a5a31"/></svg></span></em><br>Leadership</h1>
       <div class="tag">Then lead with clarity</div>
       <p class="lede">Most leadership books hand you something to add. This one is about what to take away.</p>
       <div class="ctas">
@@ -589,7 +613,7 @@
   </div>
 </section>
 
-<div class="cutline" aria-hidden="true"><div class="wrap"><div class="cl-track"><div class="cl-cut"></div><div class="cl-label">Cut here</div><div class="cl-sc"><svg class="sc" viewBox="0 0 200 100" aria-hidden="true"><defs><linearGradient id="SCs2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbfbfc"/><stop offset=".5" stop-color="#c3c6cb"/><stop offset="1" stop-color="#7b7f86"/></linearGradient><linearGradient id="SCr2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f0604c"/><stop offset=".55" stop-color="#d63a2a"/><stop offset="1" stop-color="#a91f15"/></linearGradient></defs><g class="jaw up"><path d="M58 65 L92 51" stroke="url(#SCr2)" stroke-width="9" stroke-linecap="round"/><ellipse cx="36" cy="74" rx="25" ry="16" transform="rotate(-20 36 74)" fill="none" stroke="url(#SCr2)" stroke-width="9"/><ellipse cx="35" cy="72.5" rx="20.5" ry="11.5" transform="rotate(-20 35 72.5)" fill="none" stroke="#ff9f8b" stroke-width="1.4" opacity=".5"/><path d="M86 50.5 L196 24.2 Q200.5 23.6 197.6 26.6 L102 56.5 Z" fill="url(#SCs2)" stroke="#7a7e85" stroke-width=".7" stroke-linejoin="round"/><path d="M104 48.6 L194 26" stroke="#ffffff" stroke-width="1.1" opacity=".85"/></g><g class="jaw dn"><g transform="translate(0 100) scale(1 -1)"><path d="M58 65 L92 51" stroke="url(#SCr2)" stroke-width="9" stroke-linecap="round"/><ellipse cx="36" cy="74" rx="25" ry="16" transform="rotate(-20 36 74)" fill="none" stroke="url(#SCr2)" stroke-width="9"/><ellipse cx="35" cy="72.5" rx="20.5" ry="11.5" transform="rotate(-20 35 72.5)" fill="none" stroke="#ff9f8b" stroke-width="1.4" opacity=".5"/><path d="M86 50.5 L196 24.2 Q200.5 23.6 197.6 26.6 L102 56.5 Z" fill="url(#SCs2)" stroke="#7a7e85" stroke-width=".7" stroke-linejoin="round"/><path d="M104 48.6 L194 26" stroke="#ffffff" stroke-width="1.1" opacity=".85"/></g></g><circle cx="95" cy="50" r="5.2" fill="url(#SCs2)" stroke="#5e6168" stroke-width="1.1"/><circle cx="95" cy="50" r="1.5" fill="#5e6168"/></svg></div></div></div></div>
+<div class="cutline" aria-hidden="true"><div class="wrap"><div class="cl-track"><div class="cl-cut"></div><div class="cl-label">Cut here</div><div class="cl-sc"><svg class="sc" viewBox="0 0 200 100" aria-hidden="true"><defs><linearGradient id="SCs2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff6df"/><stop offset=".5" stop-color="#e3c38a"/><stop offset="1" stop-color="#a8743c"/></linearGradient><linearGradient id="SCr2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3d9a3"/><stop offset=".55" stop-color="#c49a5e"/><stop offset="1" stop-color="#8a5a31"/></linearGradient></defs><g class="jaw up"><path d="M58 65 L92 51" stroke="url(#SCr2)" stroke-width="9" stroke-linecap="round"/><ellipse cx="36" cy="74" rx="25" ry="16" transform="rotate(-20 36 74)" fill="none" stroke="url(#SCr2)" stroke-width="9"/><ellipse cx="35" cy="72.5" rx="20.5" ry="11.5" transform="rotate(-20 35 72.5)" fill="none" stroke="#fff3d6" stroke-width="1.4" opacity=".5"/><path d="M86 50.5 L196 24.2 Q200.5 23.6 197.6 26.6 L102 56.5 Z" fill="url(#SCs2)" stroke="#8a5a31" stroke-width=".7" stroke-linejoin="round"/><path d="M104 48.6 L194 26" stroke="#ffffff" stroke-width="1.1" opacity=".85"/></g><g class="jaw dn"><g transform="translate(0 100) scale(1 -1)"><path d="M58 65 L92 51" stroke="url(#SCr2)" stroke-width="9" stroke-linecap="round"/><ellipse cx="36" cy="74" rx="25" ry="16" transform="rotate(-20 36 74)" fill="none" stroke="url(#SCr2)" stroke-width="9"/><ellipse cx="35" cy="72.5" rx="20.5" ry="11.5" transform="rotate(-20 35 72.5)" fill="none" stroke="#fff3d6" stroke-width="1.4" opacity=".5"/><path d="M86 50.5 L196 24.2 Q200.5 23.6 197.6 26.6 L102 56.5 Z" fill="url(#SCs2)" stroke="#8a5a31" stroke-width=".7" stroke-linejoin="round"/><path d="M104 48.6 L194 26" stroke="#ffffff" stroke-width="1.1" opacity=".85"/></g></g><circle cx="95" cy="50" r="5.2" fill="url(#SCs2)" stroke="#8a5a31" stroke-width="1.1"/><circle cx="95" cy="50" r="1.5" fill="#8a5a31"/></svg></div></div></div></div>
 
 <section id="book">
   <div class="bg-crap" aria-hidden="true">CRAP &middot; CRAP &middot; CRAP</div>
@@ -683,7 +707,7 @@
         <p>Be first in line on launch day, with early-reader offers and no-fluff leadership notes from Karen.</p>
         <a href="#signup" class="btn">Join the Launch List</a>
       </div>
-      <div class="promo-crap reveal"><span class="promo-sc"><svg class="sc" viewBox="0 0 200 100" aria-hidden="true"><defs><linearGradient id="SCs3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbfbfc"/><stop offset=".5" stop-color="#c3c6cb"/><stop offset="1" stop-color="#7b7f86"/></linearGradient><linearGradient id="SCr3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f0604c"/><stop offset=".55" stop-color="#d63a2a"/><stop offset="1" stop-color="#a91f15"/></linearGradient></defs><g class="jaw up"><path d="M58 65 L92 51" stroke="url(#SCr3)" stroke-width="9" stroke-linecap="round"/><ellipse cx="36" cy="74" rx="25" ry="16" transform="rotate(-20 36 74)" fill="none" stroke="url(#SCr3)" stroke-width="9"/><ellipse cx="35" cy="72.5" rx="20.5" ry="11.5" transform="rotate(-20 35 72.5)" fill="none" stroke="#ff9f8b" stroke-width="1.4" opacity=".5"/><path d="M86 50.5 L196 24.2 Q200.5 23.6 197.6 26.6 L102 56.5 Z" fill="url(#SCs3)" stroke="#7a7e85" stroke-width=".7" stroke-linejoin="round"/><path d="M104 48.6 L194 26" stroke="#ffffff" stroke-width="1.1" opacity=".85"/></g><g class="jaw dn"><g transform="translate(0 100) scale(1 -1)"><path d="M58 65 L92 51" stroke="url(#SCr3)" stroke-width="9" stroke-linecap="round"/><ellipse cx="36" cy="74" rx="25" ry="16" transform="rotate(-20 36 74)" fill="none" stroke="url(#SCr3)" stroke-width="9"/><ellipse cx="35" cy="72.5" rx="20.5" ry="11.5" transform="rotate(-20 35 72.5)" fill="none" stroke="#ff9f8b" stroke-width="1.4" opacity=".5"/><path d="M86 50.5 L196 24.2 Q200.5 23.6 197.6 26.6 L102 56.5 Z" fill="url(#SCs3)" stroke="#7a7e85" stroke-width=".7" stroke-linejoin="round"/><path d="M104 48.6 L194 26" stroke="#ffffff" stroke-width="1.1" opacity=".85"/></g></g><circle cx="95" cy="50" r="5.2" fill="url(#SCs3)" stroke="#5e6168" stroke-width="1.1"/><circle cx="95" cy="50" r="1.5" fill="#5e6168"/></svg></span>
+      <div class="promo-crap reveal"><span class="promo-sc"><svg class="sc" viewBox="0 0 200 100" aria-hidden="true"><defs><linearGradient id="SCs3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff6df"/><stop offset=".5" stop-color="#e3c38a"/><stop offset="1" stop-color="#a8743c"/></linearGradient><linearGradient id="SCr3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3d9a3"/><stop offset=".55" stop-color="#c49a5e"/><stop offset="1" stop-color="#8a5a31"/></linearGradient></defs><g class="jaw up"><path d="M58 65 L92 51" stroke="url(#SCr3)" stroke-width="9" stroke-linecap="round"/><ellipse cx="36" cy="74" rx="25" ry="16" transform="rotate(-20 36 74)" fill="none" stroke="url(#SCr3)" stroke-width="9"/><ellipse cx="35" cy="72.5" rx="20.5" ry="11.5" transform="rotate(-20 35 72.5)" fill="none" stroke="#fff3d6" stroke-width="1.4" opacity=".5"/><path d="M86 50.5 L196 24.2 Q200.5 23.6 197.6 26.6 L102 56.5 Z" fill="url(#SCs3)" stroke="#8a5a31" stroke-width=".7" stroke-linejoin="round"/><path d="M104 48.6 L194 26" stroke="#ffffff" stroke-width="1.1" opacity=".85"/></g><g class="jaw dn"><g transform="translate(0 100) scale(1 -1)"><path d="M58 65 L92 51" stroke="url(#SCr3)" stroke-width="9" stroke-linecap="round"/><ellipse cx="36" cy="74" rx="25" ry="16" transform="rotate(-20 36 74)" fill="none" stroke="url(#SCr3)" stroke-width="9"/><ellipse cx="35" cy="72.5" rx="20.5" ry="11.5" transform="rotate(-20 35 72.5)" fill="none" stroke="#fff3d6" stroke-width="1.4" opacity=".5"/><path d="M86 50.5 L196 24.2 Q200.5 23.6 197.6 26.6 L102 56.5 Z" fill="url(#SCs3)" stroke="#8a5a31" stroke-width=".7" stroke-linejoin="round"/><path d="M104 48.6 L194 26" stroke="#ffffff" stroke-width="1.1" opacity=".85"/></g></g><circle cx="95" cy="50" r="5.2" fill="url(#SCs3)" stroke="#8a5a31" stroke-width="1.1"/><circle cx="95" cy="50" r="1.5" fill="#8a5a31"/></svg></span>
         <div><span>C</span>omplacency</div>
         <div><span>R</span>ed Tape</div>
         <div><span>A</span>ssumptions</div>
@@ -830,6 +854,31 @@
   if(window.matchMedia('(hover: hover)').matches){document.querySelectorAll('.crap-item').forEach(function(c){
     c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform='translateY(-10px) rotateX('+(-y*8)+'deg) rotateY('+(x*10)+'deg)';});
     c.addEventListener('mouseleave',function(){c.style.transform='';});});}
+})();
+</script>
+<script>
+(function(){
+  var c=document.querySelector('.hcut'); if(!c) return;
+  var sc=c.querySelector('.hsc'), ln=c.querySelector('.hline line'), started=false;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function geo(){
+    var W=c.offsetWidth,H=c.offsetHeight,sw=sc.offsetWidth,sh=sw/2;
+    var y=function(px){return (56-4*(px/W*100)/100)/100*H;};
+    var ang=Math.atan2(-0.04*H,W)*180/Math.PI;
+    var px=W+sw*0.40, py=y(px), piv={x:sw*0.475,y:sh*0.5};
+    ln.setAttribute('x2',(px/W*100).toFixed(2)); ln.setAttribute('y2',(py/H*100).toFixed(2));
+    sc.style.transformOrigin=piv.x+'px '+piv.y+'px';
+    var sx=-0.14*W, sy=y(sx);
+    return {end:'translate('+(px-piv.x)+'px,'+(py-piv.y)+'px) rotate('+ang+'deg)', start:'translate('+(sx-piv.x)+'px,'+(sy-piv.y)+'px) rotate('+ang+'deg)'};
+  }
+  function run(){
+    var g=geo();
+    if(started||reduce){ sc.style.transform=g.end; sc.classList.add('go'); sc.style.transition='none'; sc.style.opacity=1; return; }
+    started=true; sc.style.transform=g.start;
+    setTimeout(function(){ sc.classList.add('go'); requestAnimationFrame(function(){ sc.style.transform=g.end; }); }, 900);
+  }
+  (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(run);
+  window.addEventListener('resize',function(){ if(started){ var g=geo(); sc.style.transition='none'; sc.style.transform=g.end; } });
 })();
 </script>
 </body>
