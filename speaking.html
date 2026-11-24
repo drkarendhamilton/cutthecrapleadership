@@ -84,7 +84,7 @@
   .book .front::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0) 4%, rgba(0,0,0,0.25) 5.5%, rgba(255,255,255,0.06) 7%, rgba(255,255,255,0) 30%, rgba(255,255,255,0.05) 70%, rgba(0,0,0,0.10) 100%); pointer-events: none; }
   .book .pages { width: var(--d); height: calc(var(--h) - 8px); top: 4px; left: calc(var(--w) - var(--d) / 2 - 3px); transform: rotateY(90deg); background: repeating-linear-gradient(90deg, #fbf8f2 0px, #fbf8f2 2px, #e8e1d4 3px, #fbf8f2 4px); box-shadow: inset 0 0 8px rgba(0,0,0,0.12); }
   .book .spine { width: var(--d); height: var(--h); left: calc(var(--d) / -2); transform: rotateY(-90deg); background: linear-gradient(90deg, #0d0e11, #1b1c21 50%, #0d0e11); }
-  .book .back { width: var(--w); height: var(--h); transform: translateZ(calc(var(--d) / -2)) rotateY(180deg); background: #141519 url('back-cover.jpg') center/cover no-repeat; box-shadow: -30px 30px 60px rgba(74,48,26,0.35); }
+  .book .back { width: var(--w); height: var(--h); transform: translateZ(calc(var(--d) / -2)) rotateY(180deg); background: #141519 url('back-cover-final.jpg') center/cover no-repeat; box-shadow: -30px 30px 60px rgba(74,48,26,0.35); }
   .book .top { width: var(--w); height: var(--d); top: calc(var(--d) / -2); transform: rotateX(90deg); background: #f4efe6; }
   .book.flipped, .book.flipped:hover { transform: rotateY(152deg) rotateX(4deg); }
   .flip-btn { position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%); background: none; border: 0; border-bottom: 1px solid var(--camel); color: var(--camel); font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; padding: 4px 2px; cursor: pointer; }
