@@ -573,6 +573,15 @@
   }
   .gf-legal { padding-top: 14px; font-size: 12px; color: var(--muted); letter-spacing: .02em; }
   .tm-mark { font-family: 'Jost', sans-serif; font-size: .2em; font-weight: 500; vertical-align: top; margin-left: .1em; color: var(--espresso); letter-spacing: 0; position: relative; top: 1.25em; }
+
+  /* buy section */
+  .format.featured .store { background: rgba(255,255,255,.55); border-color: rgba(138,90,49,.25); color: var(--espresso); }
+  .format.featured .store:hover { background: #fff; border-color: var(--camel); }
+  .store small { font-size: 12px; color: var(--muted); font-weight: 400; margin-left: 4px; }
+  .store.live .soon { color: var(--camel); }
+  .buy .format .stores { margin-top: 0; }
+  .buy .store .soon { white-space: nowrap; margin-left: 10px; }
+  .isbn { margin-top: 18px; font-size: 12px; letter-spacing: .08em; color: var(--muted); }
 </style>
 </head>
 <body>
@@ -775,32 +784,35 @@
     <div class="section-head reveal">
       <div class="rule"></div>
       <div class="eyebrow"><span class="sec-num">04</span><span class="sec-line"></span>Get Your Copy</div>
-      <h2 class="display" style="margin-top:12px;">Available December 2026 wherever books are sold</h2>
-      <p>Paperback, e-book, or a signed copy straight from Karen.</p>
+      <h2 class="display" style="margin-top:12px;">Available December 2026</h2>
+      <p>E-book everywhere you read. Paperback on Amazon, or signed and shipped directly from Karen.</p>
     </div>
     <div class="formats stagger">
+      <div class="format featured">
+        <h3>Buy Direct</h3>
+        <div class="sub">From Karen&rsquo;s own store, the best way to support the author.</div>
+        <div class="stores">
+          <a class="store buy-link" data-key="directEbook" href="early-readers.html">E-book <small>(EPUB + PDF)</small> <span class="soon">Coming soon</span></a>
+          <a class="store buy-link" data-key="directSigned" href="early-readers.html">Signed paperback <span class="soon">Coming soon</span></a>
+        </div>
+      </div>
       <div class="format">
         <h3>Paperback</h3>
-        <div class="sub">Shipped from your favorite store</div>
+        <div class="sub">Printed and shipped by Amazon</div>
         <div class="stores">
-          <a class="store" href="#signup">Amazon <span class="soon">Coming soon</span></a>
-          <a class="store" href="#signup">Barnes &amp; Noble <span class="soon">Coming soon</span></a>
-          <a class="store" href="#signup">Bookshop.org <span class="soon">Coming soon</span></a>
+          <a class="store buy-link" data-key="amazonPaperback" href="early-readers.html">Amazon <span class="soon">Coming soon</span></a>
         </div>
+        <p class="isbn">ISBN 9798145453454</p>
       </div>
       <div class="format">
         <h3>E-book</h3>
         <div class="sub">Read on any device</div>
         <div class="stores">
-          <a class="store" href="#signup">Kindle <span class="soon">Coming soon</span></a>
-          <a class="store" href="#signup">Apple Books <span class="soon">Coming soon</span></a>
-          <a class="store" href="#signup">Kobo <span class="soon">Coming soon</span></a>
+          <a class="store buy-link" data-key="kindle" href="early-readers.html">Kindle <span class="soon">Coming soon</span></a>
+          <a class="store buy-link" data-key="appleBooks" href="early-readers.html">Apple Books <span class="soon">Coming soon</span></a>
+          <a class="store buy-link" data-key="kobo" href="early-readers.html">Kobo <span class="soon">Coming soon</span></a>
+          <a class="store buy-link" data-key="nook" href="early-readers.html">B&amp;N Nook <span class="soon">Coming soon</span></a>
         </div>
-      </div>
-      <div class="format featured">
-        <h3>Signed Copy</h3>
-        <div class="sub">Personally signed by Dr. Karen Hamilton. Great for gifts, teams, and leadership retreats.</div>
-        <a href="#signup" class="btn">Coming Soon</a>
       </div>
     </div>
   </div>
@@ -913,6 +925,11 @@
   (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(run);
   window.addEventListener('resize',function(){ if(started){ var g=geo(); sc.style.transition='none'; sc.style.transform=g.end; } });
 })();
+</script>
+<script src="site-config.js"></script>
+<script>
+(function(){var L=(window.SITE_CONFIG||{}).buyLinks||{};
+document.querySelectorAll('.buy-link').forEach(function(a){var u=L[a.dataset.key];if(!u)return;a.href=u;a.target='_blank';a.rel='noopener';a.classList.add('live');var s=a.querySelector('.soon');if(s)s.innerHTML='Buy &rarr;';});})();
 </script>
 </body>
 </html>

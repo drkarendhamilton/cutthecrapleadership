@@ -14,6 +14,17 @@ window.SITE_CONFIG = {
   bookingEmbedUrl: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ0138OZEF2qiYvdLpVYCwUinw49iTrsXyHHaBOZr4dAtjYShjx-8jumR-Te5F_VnP9uKpWR03VZ?gv=true',
   calendlyUrl: '',
 
+  // Where to buy. Paste each store link as it goes live; empty = "Coming soon".
+  buyLinks: {
+    directEbook: '',      // Payhip product link for the e-book
+    directSigned: '',     // Payhip product link for signed paperbacks
+    amazonPaperback: '',
+    kindle: '',
+    appleBooks: '',
+    kobo: '',
+    nook: ''
+  },
+
   // MailerLite. Fill these in once the account exists.
   // accountId: the number in your MailerLite embed code (.../jsonp/<accountId>/forms/...)
   // forms: one MailerLite form ID per website form (data-group on each form).
